@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Тест 3D моделі</title>
+  <title>AR Перегляд моделі</title>
   <script type="module" src="./model-viewer.min.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
@@ -18,9 +16,37 @@
       background-color: #e0e0e0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    model-viewer {
-      width: 100%;
-      height: 100%;
+    model-viewer { width: 100%; height: 100%; }
+    .model-menu {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top, 16px));
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 6px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      max-width: 92vw;
+      overflow-x: auto;
+    }
+    .menu-btn {
+      border: none;
+      background: transparent;
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .menu-btn.active {
+      background-color: #5F9EA0;
+      color: #ffffff;
     }
     .ar-btn {
       position: fixed;
@@ -39,14 +65,9 @@
       padding: 14px 28px;
       font-size: 16px;
       font-weight: 600;
-      letter-spacing: 0.3px;
       box-shadow: 0 8px 20px rgba(95, 158, 160, 0.45);
       cursor: pointer;
       z-index: 100;
-      transition: transform 0.15s ease, background-color 0.15s ease;
-    }
-    .ar-btn:hover {
-      background-color: #528B8E;
     }
     .ar-btn:active {
       transform: translateX(-50%) scale(0.96);
@@ -56,9 +77,16 @@
 </head>
 <body>
 
+  <div class="model-menu" id="modelMenu">
+    <button class="menu-btn" data-model="test.glb" onclick="selectModel('test.glb')">Куб</button>
+    <button class="menu-btn" data-model="chair.glb" onclick="selectModel('chair.glb')">Стілець</button>
+    <button class="menu-btn" data-model="table.glb" onclick="selectModel('table.glb')">Стіл</button>
+  </div>
+
   <model-viewer 
-    src="./test.glb?v=3" 
-    alt="Тестова 3D модель" 
+    id="viewer"
+    src="./test.glb?v=4" 
+    alt="3D модель" 
     ar 
     ar-modes="webxr scene-viewer quick-look"
     ar-placement="floor"
@@ -72,6 +100,38 @@
     </button>
 
   </model-viewer>
+
+  <script>
+    const viewer = document.getElementById('viewer');
+    const menu = document.getElementById('modelMenu');
+    const params = new URLSearchParams(window.location.search);
+
+    // 1. Зчитуємо модель (додаємо .glb, якщо передано без розширення)
+    let initialModel = params.get('model') || 'test.glb';
+    if (!initialModel.endsWith('.glb')) {
+      initialModel += '.glb';
+    }
+
+    // 2. Зчитуємо нахил (orientation) з параметра tilt
+    const tilt = params.get('tilt');
+    if (tilt) {
+      viewer.setAttribute('orientation', tilt);
+    }
+
+    // 3. Показуємо або ховаємо меню
+    if (params.get('menu') === '0') {
+      menu.style.display = 'none';
+    }
+
+    function selectModel(fileName) {
+      viewer.src = `./${fileName}?v=4`;
+      document.querySelectorAll('.menu-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.model === fileName);
+      });
+    }
+
+    selectModel(initialModel);
+  </script>
 
 </body>
 </html>

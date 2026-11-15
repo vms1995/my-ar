@@ -32,7 +32,7 @@
       justify-content: center;
       gap: 8px;
       white-space: nowrap;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background-color: #5F9EA0;
       color: #ffffff;
       border: none;
       border-radius: 50px;
@@ -40,13 +40,17 @@
       font-size: 16px;
       font-weight: 600;
       letter-spacing: 0.3px;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 8px 20px rgba(95, 158, 160, 0.45);
       cursor: pointer;
       z-index: 100;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    .ar-btn:hover {
+      background-color: #528B8E;
     }
     .ar-btn:active {
       transform: translateX(-50%) scale(0.96);
+      background-color: #46787B;
     }
   </style>
 </head>
@@ -64,7 +68,7 @@
     auto-rotate>
 
     <button slot="ar-button" class="ar-btn">
-      <span>📦</span> Поставити в кімнаті
+      <span>📦</span> Поставити в кімнаті (AR)
     </button>
 
   </model-viewer>

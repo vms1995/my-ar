@@ -1,0 +1,21 @@
+{
+  "name": "AR Перегляд моделі",
+  "short_name": "My AR",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e0e0e0",
+  "theme_color": "#5F9EA0",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+

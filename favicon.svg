@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <defs>
+        <!-- Âàø³ îðèã³íàëüí³ ïàñòåëüí³ êîëüîðè ôîíó (50% íà 50%) -->
+        <linearGradient id="ukraineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#5F9EA0" />
+            <stop offset="50%" stop-color="#5F9EA0" />
+            <stop offset="50%" stop-color="#FAFAD2" />
+            <stop offset="100%" stop-color="#FAFAD2" />
+        </linearGradient>
+    </defs>
+
+    <!-- Çàäí³é ôîí -->
+    <rect width="456" height="456" fill="url(#ukraineGradient)" />
+
+    <!-- ØÀÐ 1: ÁÅÇÏÅ×ÍÀ ÂÅÊÒÎÐÍÀ Ò²ÍÜ (Çì³ùåíî íà 10px âãîðó) -->
+    <text x="50%"
+          font-family="system-ui, -apple-system, Arial, sans-serif"
+          font-size="72"
+          font-weight="bold"
+          text-anchor="middle"
+          fill="#000000"
+          opacity="0.3">
+        <tspan x="50%" y="214">Smb</tspan>
+        <tspan x="50%" y="309">Mob</tspan>
+    </text>
+
+    <!-- ØÀÐ 2: ÎÑÍÎÂÍÈÉ ÒÅÊÑÒ (Çì³ùåíî íà 10px âãîðó ç îðèã³íàëüíèìè êîëüîðàìè) -->
+    <text x="50%"
+          font-family="system-ui, -apple-system, Arial, sans-serif"
+          font-size="72"
+          font-weight="bold"
+          text-anchor="middle">
+        <!-- Âåðõí³é ðÿäîê: âàø îðèã³íàëüíèé ñâ³òëèé êîë³ð -->
+        <tspan x="50%" y="210" fill="#FAFAD2">Smb</tspan>
+        <!-- Íèæí³é ðÿäîê: âàø îðèã³íàëüíèé òåìíèé êîë³ð -->
+        <tspan x="50%" y="305" fill="#5F9EA0">Mob</tspan>
+    </text>
+</svg>
+

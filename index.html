@@ -78,14 +78,14 @@
 <body>
 
   <div class="model-menu" id="modelMenu">
-    <button class="menu-btn" data-model="test.glb" onclick="selectModel('test.glb')">Куб</button>
+    <button class="menu-btn" data-model="matchbox.glb" onclick="selectModel('matchbox.glb')">Сірники</button>
     <button class="menu-btn" data-model="chair.glb" onclick="selectModel('chair.glb')">Стілець</button>
     <button class="menu-btn" data-model="table.glb" onclick="selectModel('table.glb')">Стіл</button>
   </div>
 
   <model-viewer 
     id="viewer"
-    src="./test.glb?v=4" 
+    src="./matchbox.glb?v=4" 
     alt="3D модель" 
     ar 
     ar-modes="webxr scene-viewer quick-look"
@@ -107,7 +107,7 @@
     const params = new URLSearchParams(window.location.search);
 
     // 1. Зчитуємо модель (додаємо .glb, якщо передано без розширення)
-    let initialModel = params.get('model') || 'test.glb';
+    let initialModel = params.get('model') || 'matchbox.glb';
     if (!initialModel.endsWith('.glb')) {
       initialModel += '.glb';
     }

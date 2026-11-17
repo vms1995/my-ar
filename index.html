@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>AR Перегляд моделі</title>
+  <!-- Підключення вашої SVG-іконки -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="apple-touch-icon" href="./favicon.svg">
   <script type="module" src="./model-viewer.min.js"></script>
   <style>
     * { box-sizing: border-box; }
@@ -80,12 +83,12 @@
   <div class="model-menu" id="modelMenu">
     <button class="menu-btn" data-model="matchbox.glb" onclick="selectModel('matchbox.glb')">Сірники</button>
     <button class="menu-btn" data-model="chair.glb" onclick="selectModel('chair.glb')">Стілець</button>
-    <button class="menu-btn" data-model="table.glb" onclick="selectModel('table.glb')">Стіл</button>
+    <button class="menu-btn" data-model="test.glb" onclick="selectModel('test.glb')">Тест</button>
   </div>
 
   <model-viewer 
     id="viewer"
-    src="./matchbox.glb?v=4" 
+    src="./matchbox.glb?v=5" 
     alt="3D модель" 
     ar 
     ar-modes="webxr scene-viewer quick-look"
@@ -106,25 +109,22 @@
     const menu = document.getElementById('modelMenu');
     const params = new URLSearchParams(window.location.search);
 
-    // 1. Зчитуємо модель (додаємо .glb, якщо передано без розширення)
     let initialModel = params.get('model') || 'matchbox.glb';
     if (!initialModel.endsWith('.glb')) {
       initialModel += '.glb';
     }
 
-    // 2. Зчитуємо нахил (orientation) з параметра tilt
     const tilt = params.get('tilt');
     if (tilt) {
       viewer.setAttribute('orientation', tilt);
     }
 
-    // 3. Показуємо або ховаємо меню
     if (params.get('menu') === '0') {
       menu.style.display = 'none';
     }
 
     function selectModel(fileName) {
-      viewer.src = `./${fileName}?v=4`;
+      viewer.src = `./${fileName}?v=5`;
       document.querySelectorAll('.menu-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.model === fileName);
       });
